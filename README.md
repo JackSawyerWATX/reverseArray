@@ -26,7 +26,22 @@ To run the program from the terminal:
 python reverse.py
 ```
 
-This will execute the `reverseArray` function with predefined test cases and display the results.
+This will execute three different implementations of the `reverseArray` function with predefined test cases and display the results:
+
+**Expected Output:**
+```
+[5, 4, 3, 2, 1]           # Slicing method
+[42, 43, 44, 45, 46, 47, 48]  # Built-in reversed() method
+[50, 40, 30, 20, 10]      # In-place reverse() method
+```
+
+## Current Implementation Structure
+
+The `reverse.py` file contains three different implementations of the same function to demonstrate various approaches:
+
+1. **Method 1:** Using slicing (`arr[::-1]`)
+2. **Method 2:** Using `list(reversed(arr))`
+3. **Method 3:** Using `arr.reverse()` with return statement
 
 ## Function Documentation
 
@@ -137,5 +152,53 @@ This exercise was originally from HackerRank and was completed as coding practic
 - Array/List manipulation
 - Different approaches to solving the same problem
 - Code optimization and readability
+- Memory management considerations
+- Performance analysis of different algorithms
+
+## Common Issues and Solutions
+
+### Issue: `arr.reverse()` returns `None`
+**Problem:** The `arr.reverse()` method modifies the list in-place and returns `None`, not the reversed list.
+
+**Incorrect:**
+```python
+def reverseArray(arr):
+    return arr.reverse()  # Returns None!
+```
+
+**Correct:**
+```python
+def reverseArray(arr):
+    arr.reverse()
+    return arr  # Must explicitly return the modified array
+```
+
+## Performance Comparison
+
+| Method | Time Complexity | Space Complexity | Modifies Original | Speed |
+|--------|----------------|------------------|-------------------|-------|
+| Slicing `arr[::-1]` | O(n) | O(n) | No | Fastest |
+| `list(reversed(arr))` | O(n) | O(n) | No | Medium |
+| `arr.reverse()` | O(n) | O(1) | Yes | Fast |
+| Two-pointer | O(n) | O(1) | Yes | Slowest |
+
+## Best Practices
+
+1. **Use slicing** (`arr[::-1]`) for most cases - it's Pythonic and efficient
+2. **Use `arr.reverse()`** when memory is a concern and modifying the original is acceptable
+3. **Use `list(reversed())`** for better code readability when intent is important
+4. **Avoid two-pointer approach** in Python unless for educational purposes
+
+## Contributing
+
+Feel free to add more test cases or alternative implementations! Some ideas:
+- Add error handling for non-list inputs
+- Add type hints for better code documentation
+- Implement recursive reversal approach
+- Add benchmarking code to compare performance
+
+## License
+
+This project is for educational purposes. Feel free to use and modify as needed.
 
 ### I love you all! Happy coding!
